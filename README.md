@@ -4,7 +4,7 @@
 
 ## 打开与下载
 
-打开 project/cpu_a_stage1.xpr。硬件顶层为 ego1_a_top，板卡仿真顶层为 tb_ego1_a_top。器件暂沿用已使用的 xc7a35tcsg324-1。
+克隆或解压整个仓库后，在 Vivado 2019.2 中直接打开 [工程文件](project/cpu_a_stage1.xpr)。保留仓库目录结构，源码和约束通过相对路径引用。硬件顶层为 ego1_a_top，板卡仿真顶层为 tb_ego1_a_top。器件暂沿用已使用的 xc7a35tcsg324-1。
 
 下载 project/cpu_a_stage1.runs/impl_1/ego1_a_top.bit。连接 EGO1 UART/JTAG 后，在 Hardware Manager 中 Program Device，确认选的是新工程的文件。
 

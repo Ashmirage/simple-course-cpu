@@ -1,4 +1,5 @@
-/project/
+/project/*
+!/project/cpu_a_stage1.xpr
 /.Xil/
 *.log
 *.jou
