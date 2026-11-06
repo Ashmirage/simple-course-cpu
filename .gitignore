@@ -1,0 +1,8 @@
+/project/
+/.Xil/
+*.log
+*.jou
+/*.rpt
+*.bit
+*.dcp
+/xsim.dir/
