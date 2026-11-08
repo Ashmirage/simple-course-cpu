@@ -1,4 +1,27 @@
 `timescale 1ns / 1ps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`include "cpu_defs.vh"
+
 module pc_reg (
     input  wire        clk,
     input  wire        reset,
@@ -9,11 +32,9 @@ module pc_reg (
 
     always @(posedge clk) begin
         if (reset)
-            pc <= 32'd0;
+            pc <= `RESET_PC;
         else if (enable)
             pc <= next_pc;
     end
 
 endmodule
-
-

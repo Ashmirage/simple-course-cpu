@@ -1,5 +1,5 @@
 /project/*
-!/project/cpu_a_stage1.xpr
+!/project/cpu_stage1.xpr
 /.Xil/
 *.log
 *.jou
@@ -7,3 +7,11 @@
 *.bit
 *.dcp
 /xsim.dir/
+/validation/
+**/*.cache/
+**/*.runs/
+**/*.sim/
+**/*.hw/
+**/ip_user_files/
+/ip/clk_wiz_0/*
+!/ip/clk_wiz_0/clk_wiz_0.xci
