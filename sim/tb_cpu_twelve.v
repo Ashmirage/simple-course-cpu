@@ -2,7 +2,7 @@
 module tb_cpu_twelve #(parameter INJECT=0);
  reg clk=0,reset=1,enable=0;
  always #5 clk=~clk;
- wire [31:0] pc,inst,rom_inst,addr,wd,rd,status;
+ wire [31:0] pc,inst,rom_inst,addr,wd,rd,status,display_value;
  wire en,err,fault;
  wire [3:0] strb;
  wire [15:0] led;
@@ -13,8 +13,9 @@ module tb_cpu_twelve #(parameter INJECT=0);
  .imem_rdata(inst),.imem_error(pc[1:0]!=0 || pc>1023),.dmem_en(en),
  .dmem_wstrb(strb),.dmem_addr(addr),.dmem_wdata(wd),.dmem_rdata(rd),.dmem_error(err),.fault(fault));
  data_mem ram(.clk(clk),.reset(reset),.en(en),.wstrb(strb),.addr(addr),
- .wdata(wd),.rdata(rd),.error(err),.led_out(led),.display_out(),.status_out(status));
- integer i;
+ .wdata(wd),.rdata(rd),.error(err),.led_out(led),.display_out(display_value),.status_out(status));
+ integer i,j,updates;
+ reg [31:0] expected;
  initial begin
  repeat(2) @(negedge clk);reset=0;enable=1;
  for(i=0;i<300;i=i+1) begin
@@ -30,7 +31,9 @@ module tb_cpu_twelve #(parameter INJECT=0);
  ram.ram[5]!==(32'd2026 | 32'd7887) ||
  ram.ram[6]!==(32'd2026 ^ 32'd7887) || ram.ram[7]!==32'd8704 ||
  dut.u_regfile.regs[13]!==32'd10730) $fatal(1,"RESULT CHECK FAIL");
- $display("TWELVE INSTRUCTION TEST PASS: 2026, 7887, 8704");$finish;
+ $display("TWELVE INSTRUCTION TEST PASS: 2026, 7887, 8704");
+ $finish;
+
  end
  end
  $fatal(1,"TIMEOUT");
